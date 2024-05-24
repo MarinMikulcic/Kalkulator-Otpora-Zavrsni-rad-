@@ -8,8 +8,7 @@ def create_main_window(num_values):
     # Create the main window
     window = tk.Tk()
     window.title('Kalkulator otpora')
-
-    # Create a frame to hold the entry fields
+    
     entry_frame = tk.Frame(window)
     entry_frame.pack()
 
@@ -31,7 +30,6 @@ def create_main_window(num_values):
 
     # Create a function to calculate the resistance
     def calculate_resistance():
-        # Get the values from the entries
         values = [entry.cget("text") for entry in entries]
         # Define a dictionary that maps the colors of the values to their corresponding values
         color_values = {
@@ -106,6 +104,7 @@ def create_main_window(num_values):
 
         # Calculate the tolerance
         tolerable = resistance * tolerance / 100
+        
         # Convert the result to ohms, kilo-ohms or mega-ohms depending on the value
         if resistance > 1000:
             resistance = resistance / 1000
@@ -118,6 +117,7 @@ def create_main_window(num_values):
             else:
                 resistance = str(round(resistance, 2)) + "k"
                 tolerable = str(round(tolerable, 2)) + "k"
+            
         # Set the result label to the resistance and tolerance
         result_label.config(text=f'Otpor je {resistance}Ω ± {tolerable}Ω (± {tolerance}%)')
         if temperature_coefficient != 0:
@@ -130,13 +130,10 @@ def create_main_window(num_values):
     # Resize the image
     image = image.resize((125, 50))
 
-    # Create a PhotoImage object to display the image
     photo_image = ImageTk.PhotoImage(image)
 
-    # Create a label widget
     label = tk.Label(window, image=photo_image)
 
-    # Pack the label to the GUI
     label.pack()
 
     # Place the image between selector buttons and calculate button
@@ -186,6 +183,7 @@ def create_start_menu():
     label = Label(window, text="Kalkulator otpora", font=("Arial", 12, "bold"))
     label.pack()
 
+    #Add the school info and separate the next header
     label = Label(window, text="Srednja strukovna škola Velika Gorica", font=("Arial", 9))
     label.pack()
     space_label = tk.Label(window)
@@ -200,13 +198,10 @@ def create_start_menu():
     # Resize the image
     logo = logo.resize((75,75))
 
-    # Create a PhotoImage object to display the image
     logo_image = ImageTk.PhotoImage(logo)
 
-    # Create a label widget
     logo = tk.Label(window, image=logo_image)
 
-    # Pack the label to the GUI
     logo.pack()
 
     # Place the image at 0, 0
@@ -260,13 +255,10 @@ def create_start_menu():
     # Resize the image
     image = image.resize((176,100))
 
-    # Create a PhotoImage object to display the image
     photo_image = ImageTk.PhotoImage(image)
 
-    # Create a label widget
     label = tk.Label(window, image=photo_image)
 
-    # Pack the label to the GUI
     label.pack()
 
     # Place the image at 100, 190
@@ -282,7 +274,7 @@ def create_start_menu():
     space_label = tk.Label(window)
     space_label.pack()
 
-    # Add a name
+    # Add the made by designation
     label = Label(window, text="Napravio: Marin Mikulčić", font=("Arial", 10))
     label.pack(side=RIGHT, padx=0)
 
